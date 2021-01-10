@@ -5,7 +5,11 @@ import time
 import cv2
 import json
 
-configFile = open('../appsettings.json')
+configFileLocation = os.getenv('alarm_config_location') 
+if not configFileLocation :
+    configFileLocation = '../appsettings.json'
+    
+configFile = open(configFileLocation)
 config = json.load(configFile)
 
 def capture_image(cameraID, cameraURL, imageFolder):
